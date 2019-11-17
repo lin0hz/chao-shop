@@ -1,3 +1,3 @@
-const BASE_URL = 'http://localhost:7890'
+const BASE_URL = 'http://ttapi.research.itcast.cn'
 
 export {BASE_URL}
