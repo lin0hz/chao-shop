@@ -1,0 +1,11 @@
+.home_wrap {
+    height: 100%;
+}
+.el-menu-demo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tac {
+    height: 100%;
+}

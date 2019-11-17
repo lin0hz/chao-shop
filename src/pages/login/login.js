@@ -43,16 +43,25 @@ class Login extends Component {
     }
     handleSubmit(e) {
         e.preventDefault(); 
+        this.setState({
+            isLoading:true
+        })
         this.refs.form.validate(async(valid) => {
           if (valid) {
             let oRes = await this.axios.post('/mp/v1_0/authorizations',this.state.form);
             console.log(oRes);
             if(oRes.status===201){
+                this.setState({
+                    isLoading:false
+                })
                 this.props.history.push('/home')
                 window.localStorage.setItem('chao_token',JSON.stringify(oRes.data.data))
             }
             
           } else {
+            this.setState({
+                isLoading:false
+            })
             console.log('error submit!!');
             return false;
           }
@@ -87,7 +96,7 @@ class Login extends Component {
                         </Checkbox>
                     </Form.Item>
                     <Form.Item >
-                        <Button type="primary" onClick={this.handleSubmit.bind(this)} className="login_btn">立即登录</Button>
+                        <Button type="primary" onClick={this.handleSubmit.bind(this)} className="login_btn" loading={this.state.isLoading}>立即登录</Button>
                     </Form.Item>
                 </Form>
                 </div>
